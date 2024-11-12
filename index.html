@@ -45,7 +45,7 @@ async function fetchProgressData() {
             const maxValue = 500;  // Set max value for your progress bar
             const percentage = Math.min(100, (currentValue / maxValue) * 100);
 
-            updateProgressBar(percentage);
+            updateProgressBar(percentage, currentValue);  // Pass currentValue to updateProgressBar
         } else {
             console.error("Invalid data format in Google Sheets.");
         }
@@ -54,12 +54,12 @@ async function fetchProgressData() {
     }
 }
 
-function updateProgressBar(percentage) {
+function updateProgressBar(percentage, currentValue) {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
 
     progressBar.style.width = percentage + "%";
-    progressText.textContent = "$" + str(currentValue);
+    progressText.textContent = "$" + currentValue.toFixed(2);  // Format the number as a dollar amount
 }
 
 // Fetch data on load and set interval to update
