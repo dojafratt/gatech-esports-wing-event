@@ -16,12 +16,12 @@
 
     #progress-bar {
         height: 100%;
-        width: 0;  /* Width will be set dynamically */
-        background-color: #f8bf18;  /* Adjust to your preferred color */
+        width: 0;
+        background-color: #f8bf18;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: width 0.5s ease;  /* Smooth transition for width changes */
+        transition: width 0.5s ease;
     }
 
     #progress-text {
@@ -36,7 +36,7 @@
 <script>
 async function fetchProgressData() {
     const SHEET_ID = '1UCEfzceWL4J27p-7QCEv4dzuZDcTy1X-p61_3Zf4mIQ';
-    const RANGE = 'Sheet1!A1';  // Specify the cell with progress data
+    const RANGE = 'Sheet1!A1';  // SPECIFY SUM CELL HERE
     const API_KEY = 'AIzaSyCqQrla7Xl-u4q2KzkQcWSh3TcXxGOWfcE';
 
     try {
@@ -45,10 +45,10 @@ async function fetchProgressData() {
 
         if (data.values && data.values[0] && !isNaN(data.values[0][0])) {
             const currentValue = parseFloat(data.values[0][0]);
-            const maxValue = 500;  // Set max value for your progress bar
+            const maxValue = 500;  // SPECIFY FUNDRAISING GOAL HERE
             const percentage = Math.min(100, (currentValue / maxValue) * 100);
 
-            updateProgressBar(percentage, currentValue);  // Pass currentValue to updateProgressBar
+            updateProgressBar(percentage, currentValue);
         } else {
             console.error("Invalid data format in Google Sheets.");
         }
@@ -62,10 +62,9 @@ function updateProgressBar(percentage, currentValue) {
     const progressText = document.getElementById('progress-text');
 
     progressBar.style.width = percentage + "%";
-    progressText.textContent = "$" + currentValue.toFixed(2);  // Format the number as a dollar amount
+    progressText.textContent = "$" + currentValue.toFixed(2);
 }
 
-// Fetch data on load and set interval to update
 fetchProgressData();
-setInterval(fetchProgressData, 10000);  // Update every 10 seconds
+setInterval(fetchProgressData, 10000);  // UPDATE INTERVAL
 </script>
