@@ -58,7 +58,7 @@ function updateProgressBar(percentage) {
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
 
-    progressBar.style.width = '$' + currentValue;
+    progressBar.style.width = percentage + "%";
     progressText.textContent = '$' + currentValue;
 }
 
