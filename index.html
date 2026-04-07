@@ -45,7 +45,7 @@ async function fetchProgressData() {
 
         if (data.values && data.values[0] && !isNaN(data.values[0][0])) {
             const currentValue = parseFloat(data.values[0][0]);
-            const maxValue = 500;  // SPECIFY FUNDRAISING GOAL HERE
+            const maxValue = 750;  // SPECIFY FUNDRAISING GOAL HERE
             const percentage = Math.min(100, (currentValue / maxValue) * 100);
 
             updateProgressBar(percentage, currentValue);
